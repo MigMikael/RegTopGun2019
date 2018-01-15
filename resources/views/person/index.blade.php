@@ -5,12 +5,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h1>All Person</h1>
+                    <div class="panel-heading col-md-12">
+                        <div class="col-md-6">
+                            <h1>All Person</h1>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <h4><a class="btn btn-primary" href="{{ url('person/create') }}">Add</a></h4>
+                        </div>
                     </div>
 
                     <div class="panel-body">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-bordered">
                             <thead>
                             <tr>
                                 <th>ลำดับ</th>
@@ -38,7 +43,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <p> </p>
                     </div>
                 </div>
             </div>

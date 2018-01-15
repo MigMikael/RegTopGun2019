@@ -37,7 +37,20 @@ class PersonController extends Controller
         $person['qr_code'] = $imgPath;
         $person->save();
 
-        return $person;
+        return redirect()->action('PersonController@show', [
+            'id' => $person->id
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $editPerson = $request->all();
+        $person = Person::findOrFail($id);
+        $person->update($editPerson);
+
+        return redirect()->action('PersonController@show', [
+            'id' => $person->id
+        ]);
     }
 
     public function show($id)
@@ -46,5 +59,43 @@ class PersonController extends Controller
         return view('person.show')->with([
             'person' => $person
         ]);
+    }
+
+    public function edit($id){
+        $person = Person::findOrFail($id);
+        return view('person.edit')->with([
+            'person' => $person
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $person = Person::findOrFail($id);
+        $person->delete();
+
+        return redirect()->action('PersonController@index');
+    }
+
+    public function check_in()
+    {
+        return view('person.check-in');
+    }
+
+    public function storeCheckIn(Request $request)
+    {
+        $first_name = $request->get('first_name');
+        $last_name = $request->get('last_name');
+
+        $person = Person::where([
+            ['first_name', 'LIKE', '%'.$first_name.'%'],
+            ['last_name', 'LIKE', '%'.$last_name.'%']
+        ])->first();
+
+        $person->is_register = True;
+        $person->save();
+
+        return redirect()->action('PersonController@show',
+            ['id' => $person->id]
+        )->with(['status' => 'register success']);
     }
 }

@@ -24,3 +24,10 @@ Route::get('person', 'PersonController@index');
 Route::get('person/create', 'PersonController@create');
 Route::post('person', 'PersonController@store');
 Route::get('person/{id}', 'PersonController@show');
+Route::get('person/{id}/edit', 'PersonController@edit');
+Route::patch('person/{id}', 'PersonController@update');
+Route::delete('person/{id}', 'PersonController@destroy');
+
+
+Route::get('check-in', 'PersonController@check_in');
+Route::post('check-in', 'PersonController@storeCheckIn');

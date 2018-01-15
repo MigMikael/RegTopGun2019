@@ -6,12 +6,12 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h1>Create Person</h1>
+                        <h1>Edit Person</h1>
                     </div>
 
                     <div class="panel-body">
-                        {!! Form::open(['url' => 'person', 'class' => 'form-horizontal']) !!}
-                            @include('person._form', ['submitText' => 'add'])
+                        {!! Form::model($person, ['method' => 'PATCH', 'url' => 'person/'.$person->id, 'class' => 'form-horizontal']) !!}
+                        @include('person._form', ['submitText' => 'finish'])
                         {!! Form::close() !!}
                     </div>
                 </div>
