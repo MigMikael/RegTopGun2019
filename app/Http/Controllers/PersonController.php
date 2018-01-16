@@ -9,6 +9,23 @@ use App\Helper\TokenGenerator;
 
 class PersonController extends Controller
 {
+    public $role = [
+        'competition' => 'ผู้เข้าแข่งขัน',
+        'staff' => 'ทีมงาน',
+        'judge' => 'กรรมการ',
+        'observer' => 'ผู้สังเกตการณ์',
+    ];
+
+    public $shirt_size = [
+        'XS' => 'XS',
+        'S' => 'S',
+        'M' => 'M',
+        'L' => 'L',
+        'XL' => 'XL',
+        'XXL' => 'XXL',
+        'XXXL' => 'XXXL'
+    ];
+
     public function index()
     {
         $persons = Person::all();
@@ -19,7 +36,10 @@ class PersonController extends Controller
 
     public function create()
     {
-        return view('person.create');
+        return view('person.create')->with([
+            'role' => $this->role,
+            'shirt_size' => $this->shirt_size
+        ]);
     }
 
     public function store(Request $request)
@@ -64,7 +84,9 @@ class PersonController extends Controller
     public function edit($id){
         $person = Person::findOrFail($id);
         return view('person.edit')->with([
-            'person' => $person
+            'person' => $person,
+            'role' => $this->role,
+            'shirt_size' => $this->shirt_size
         ]);
     }
 

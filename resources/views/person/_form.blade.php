@@ -45,7 +45,7 @@
 <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
     {!! Form::label('role', 'Role', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('role', null,['class' => 'form-control']) !!}
+        {!! Form::select('role', $role, null,['class' => 'form-control']) !!}
         @if ($errors->has('role'))
             <span class="help-block">
                 <strong>{{ $errors->first('role') }}</strong>
@@ -56,7 +56,7 @@
 <div class="form-group{{ $errors->has('shirt_size') ? ' has-error' : '' }}">
     {!! Form::label('shirt_size', 'Shirt Size', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('shirt_size', null,['class' => 'form-control']) !!}
+        {!! Form::select('shirt_size', $shirt_size, null,['class' => 'form-control']) !!}
         @if ($errors->has('shirt_size'))
             <span class="help-block">
                 <strong>{{ $errors->first('shirt_size') }}</strong>

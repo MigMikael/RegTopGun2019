@@ -11,7 +11,7 @@
 
                     <div class="panel-body">
                         {!! Form::open(['url' => 'person', 'class' => 'form-horizontal']) !!}
-                            @include('person._form', ['submitText' => 'add'])
+                            @include('person._form', ['submitText' => 'Add'])
                         {!! Form::close() !!}
                     </div>
                 </div>
